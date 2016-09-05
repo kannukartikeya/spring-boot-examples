@@ -25,22 +25,22 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-        Product shirt = new Product();
-        shirt.setDescription("Spring Framework Guru Shirt");
-        shirt.setPrice(new BigDecimal("18.95"));
-        shirt.setImageUrl("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_shirt-rf412049699c14ba5b68bb1c09182bfa2_8nax2_512.jpg");
-        shirt.setProductId("235268845711068308");
-        productRepository.save(shirt);
+        Product mainLight = new Product();
+        mainLight.setDescription("Main Light");
+        mainLight.setPrice(new BigDecimal("1"));
+        mainLight.setImageUrl("Main Light");
+        mainLight.setProductId("235268845711068308");
+        productRepository.save(mainLight);
 
-        log.info("Saved Shirt - id: " + shirt.getId());
+        log.info("Saved mainLight - id: " + mainLight.getId());
 
-        Product mug = new Product();
-        mug.setDescription("Spring Framework Guru Mug");
-        mug.setImageUrl("https://springframework.guru/wp-content/uploads/2015/04/spring_framework_guru_coffee_mug-r11e7694903c348e1a667dfd2f1474d95_x7j54_8byvr_512.jpg");
-        mug.setProductId("168639393495335947");
-        mug.setPrice(new BigDecimal("11.95"));
-        productRepository.save(mug);
+        Product sideLight = new Product();
+        sideLight.setDescription("Side Light");
+        sideLight.setImageUrl("Side Light");
+        sideLight.setProductId("168639393495335947");
+        sideLight.setPrice(new BigDecimal("1"));
+        productRepository.save(sideLight);
 
-        log.info("Saved Mug - id:" + mug.getId());
+        log.info("Saved sideLight - id:" + sideLight.getId());
     }
 }
