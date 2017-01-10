@@ -1,4 +1,4 @@
-package guru.springframework.mqtt;
+package poc.pbdefault.mqtt;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

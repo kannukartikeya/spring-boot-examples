@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Probability Of Default Modelling</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
+</head>
+<body>
+	<div class="container">
+      <div class="page-header" id="banner">
+        <div class="row text-center">
+         <h3>PDModel History</h3>
+        
+          <div class="col-lg-12 col-md-7 col-sm-6" style="height:160px;overflow:auto;">
+            
+
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Last FICO Range High</th>
+						<th>Last FICO Range Low</th>												
+						<th>Revol Util</th>
+						<th>Inq Last 6 Months</th>
+						<th>On Rent</th>
+						<th>Classification</th>
+						<th>Probability Of Default</th>
+						<th>Loan Amount</th>
+						<th>Annual Income</th>
+					</tr>
+				</thead>
+				<tbody>
+				    <tr th:each="pdModel : ${pdModels}">
+				    	<td th:text="${pdModel.last_fico_range_high}"></td>
+				    	<td th:text="${pdModel.last_fico_range_low}"></td>
+				    	<td th:text="${pdModel.revol_util}"></td>
+				    	<td th:text="${pdModel.inq_last_6mths}"></td>
+				    	<td th:text="${pdModel.is_rent}"></td>
+				    	<td th:text="${pdModel.score}"></td>
+				    	<td th:text="${pdModel.prob_default}"></td>
+				    	<td th:text="${pdModel.loan_amt}"></td>
+				    	<td th:text="${pdModel.annual_inc}"></td>
+				    </tr>
+				</tbody>
+			</table>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        
+        
+        <div class="row text-center">
+        <div class="col-md-2"></div>
+          <div class="col-lg-6 col-md-7 col-sm-6">
+            <h3>Credit Applicant Profile</h3>
+
+			<form th:action="@{/pdModels}" method="post" enctype="multipart/form-data" class="form-horizontal">
+            	<fieldset>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Last FICO Range High</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="last_fico_range_high"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Last FICO Range Low</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="last_fico_range_low"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Revol Util</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="revol_util"/>
+	                    </div>
+                	</div>
+                	<div class="form-group">
+	                    <label class="col-lg-3 control-label">Inq Last 6 Months</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="inq_last_6mths"/>
+	                    </div>
+                	</div>
+                	           		<div class="form-group">
+	                    <label class="col-lg-3 control-label">On Rent</label>
+	                    <div class="col-lg-9">
+	                    	<input type="checkbox" checked="checked" class="form-control" name="is_rent"/>
+	                    </div>
+                	</div>
+               		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Loan Amount</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="loan_amt"/>
+	                    </div>
+                	</div>
+                	 <div class="form-group">
+	                    <label class="col-lg-3 control-label">Annual Income</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="annual_inc"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+                		<div class="col-lg-12 col-lg-offset-3">
+                			<button type="submit" class="btn btn-primary" name="button">PREDICT CREDIT RISK</button>
+                		</div>
+                		
+                	</div>
+                </fieldset>
+            </form>
+          </div>
+                      <div class="row text-center">
+                	  <img src="../../static/images/prediction.jpg" width="200"
+                     th:src="@{/images/prediction.jpg}"/>
+           			 </div>
+        </div>
+        
+        
+        
+      </div>
+      
+      
+    </div>
+    
+
+</body>
+</html>

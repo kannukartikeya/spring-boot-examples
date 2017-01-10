@@ -19,30 +19,107 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" th:href="@{/products}">Devices</a></li>
-                        <li><a href="#" th:href="@{/product/new}">Register Device</a></li>
-                    </ul>
+                
+                
+                
+       <div class="row text-center">
+        
+        <h1>PDModel History</h1>
+        <div class="col-md-3" ></div>
+          <div class="col-lg-8 col-md-7 col-sm-6" style="height:160px;overflow:auto;">
+            
+
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Last FICO Range High</th>
+						<th>Last FICO Range Low</th>
+						<th>Revol Util</th>
+						<th>Inq Last 6 Months</th>
+						<th>On Rent</th>
+						<th>Classification</th>
+						<th>Probability Of Default</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+				    <tr th:each="pdModel : ${pdModels}">
+				    	<td th:text="${pdModel.last_fico_range_high}"></td>
+				    	<td th:text="${pdModel.last_fico_range_low}"></td>
+				    	<td th:text="${pdModel.revol_util}"></td>
+				    	<td th:text="${pdModel.inq_last_6mths}"></td>
+				    	<td th:text="${pdModel.is_rent}"></td>
+				    	<td th:text="${pdModel.score}"></td>
+				    	<td th:text="${pdModel.prob_default}"></td>
+				    </tr>
+				</tbody>
+			</table>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
 
                 </div>
             </div>
         </nav>
 
+<div class="row text-center" >
         <div class="jumbotron">
-            <div class="row text-center">
-                <div class="">
-                    <h2>Home Automation</h2>
+         <div class="col-md-6" ></div>
+         <h2>Credit Applicant Loan Profile</h2>
+         <div class="col-md-3" ></div>
+        <div class="col-lg-6 col-md-7 col-sm-6">
+            
 
-                    <h3>Spring Boot Web App</h3>
-                </div>
-            </div>
-            <div class="row text-center">
-                <img src="../../static/images/NewBannerBOOTS_2.png" width="200"
-                     th:src="@{/images/NewBannerBOOTS_2.png}"/>
-            </div>
-        </div>
-    </div>
+			<form th:action="@{/pdModels}" method="post" enctype="multipart/form-data" class="form-horizontal">
+            	<fieldset>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Last FICO Range High</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="last_fico_range_high"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Last FICO Range Low</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="last_fico_range_low"/>
+	                    </div>
+                	</div>
+            		<div class="form-group">
+	                    <label class="col-lg-3 control-label">Revol Util</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="revol_util"/>
+	                    </div>
+                	</div>
+                	<div class="form-group">
+	                    <label class="col-lg-3 control-label">Inq Last 6 Months</label>
+	                    <div class="col-lg-9">
+	                    	<input type="text" class="form-control" name="inq_last_6mths"/>
+	                    </div>
+                	</div>
+                	           		<div class="form-group">
+	                    <label class="col-lg-3 control-label">On Rent</label>
+	                    <div class="col-lg-9">
+	                    	<input type="checkbox" checked="checked" class="form-control" name="is_rent"/>
+	                    </div>
+                	</div>
+                	
+            		<div class="form-group">
+                		<div class="col-lg-12 col-lg-offset-3">
+                			<button type="submit" class="btn btn-primary" name="button">PREDICT CREDIT RISK</button>
+                		</div>
+                	</div>
+                </fieldset>
+            </form>
+          </div>
+          
+            			<div class="row text-center">
+                			<img src="../../static/images/NewBannerBOOTS_2.png" width="200"
+                     			th:src="@{/images/mac_learn.jpg}"/>
+            			</div>
+       				</div>
+       
+       </div>
+    	</div>
 </div>
 </body>
 </html>

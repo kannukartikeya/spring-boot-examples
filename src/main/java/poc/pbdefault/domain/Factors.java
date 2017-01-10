@@ -1,9 +1,9 @@
-package guru.springframework.domain;
+package poc.pbdefault.domain;
 
 import javax.persistence.*;
 
 @Entity
-public class Device {
+public class Factors {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
@@ -11,17 +11,17 @@ public class Device {
     private String description;
     private String status;
 
-	public Device() {
+	public Factors() {
 		super();
     }
 
-    public Device(String label, String description) {
+    public Factors(String label, String description) {
 		super();
 		this.label = label;
 		this.description = description;
 	}
     
-    public Device(String label, String description,String status) {
+    public Factors(String label, String description,String status) {
  		super();
  		this.label = label;
  		this.description = description;
